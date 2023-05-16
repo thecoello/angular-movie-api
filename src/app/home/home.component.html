@@ -1,14 +1,14 @@
 <div class="row">
-    <div class="col d-flex">
-        <div class="card m-1 text-bg-dark">
-            <img src="https://images.unsplash.com/photo-1635805737707-575885ab0820?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80" height="400px" width="100%" class="card-img" alt="...">
+    <div class="col d-flex d-wrap movies">
+        <div class="card m-1 text-bg-dark movie" *ngFor="let movie of movies">
+            <img src='{{ "https://image.tmdb.org/t/p/w500/" + movie.poster_path }}' height="400px" width="100%" class="card-img" alt="...">
 
             <div class="card-img-overlay cardsMovies">
-                <h2 class="card-title">Título</h2>
-                <p class="card-title"><b>Título original</b></p>
+                <h2 class="card-title">{{movie.title}}</h2>
+                <p class="card-title"><b>{{movie.original_title}}</b></p>
 
-                <p class="card-text">Fecha de lanzaminto</p>
-                <p class="card-text"><small>Overview</small></p>
+                <p class="card-text">{{movie.release_date}}</p>
+                <p class="card-text"><small>{{movie.overview}}</small></p>
             </div>
         </div>
 
