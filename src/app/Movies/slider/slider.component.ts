@@ -14,13 +14,8 @@ export class SliderComponent implements OnInit {
   ngOnInit(): void {
     this.ApiServices.getPopularMovies().subscribe((data) => {
       
-      data.results.forEach((e,i) => {
-        i++
-        if(i <= 10){
-          console.log(data.results)
-          this.sliders = data.results;
-        }
-      });
+      this.sliders = data.results;
+
 
     },
       (error) => {
