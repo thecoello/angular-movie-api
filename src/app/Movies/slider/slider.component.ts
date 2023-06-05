@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Movies } from '../../models/movies-response.model';
-import { ApiServices } from '../../services/api-movie.service';
+import { ApiServices } from '../../services/api-titles.service';
 
 @Component({
   selector: 'app-slider',
@@ -12,7 +12,7 @@ export class SliderComponent implements OnInit {
   constructor(private ApiServices: ApiServices) { }
 
   ngOnInit(): void {
-    this.ApiServices.getPopularMovies().subscribe((data) => {
+    this.ApiServices.getPopularMovies('').subscribe((data) => {
       
       this.sliders = data.results;
 
