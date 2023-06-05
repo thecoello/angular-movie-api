@@ -1,29 +1,36 @@
-<div class="container">
+<div class="container-fluid fixed-top m-0 p-0">
   <nav class="navbar navbar-expand-lg bg-body-tertiary">
       <div class="container-fluid">
-          <a class="navbar-brand text-light" href="#">Navbar</a>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
-              aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-              <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-              <div class="navbar-nav">
-                  <a class="nav-link text-light" href="#">Home</a>
-                  <a class="nav-link text-light" href="#">Movies</a>
-                  <a class="nav-link text-light" href="#">TV Shows
-                  </a>
-  
-              </div>
+          
+
+          <div class="row w-100">
+            <div class="w-50 col-6">
+                <a class="navbar-brand text-light" href="#">ScREEN</a>
+            </div>
+            <div class="w-50 col-6">
+                <div class="d-flex justify-content-end" role="search">
+                    <input [(ngModel)]='titleMovie' [defaultValue]="undefined" name="titleMovie" id="titleMovie"  class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+               
+                    <select [(ngModel)]='titleType' name="titleType" id="select-option" class="form-select  me-2" aria-label="Type">
+                      <option value="Movie" selected >Movie</option>
+                      <option value="TV Show">TV Show</option>
+                    </select>
+                    <button (click)='findTitle()' class="btn btn-outline-light" type="submit">Search</button>
+                </div>
+            </div>
           </div>
-          <form class="d-flex" role="search">
-              <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-              <button class="btn btn-outline-light" type="submit">Search</button>
-          </form>
       </div>
   </nav>
 </div>
 
-<div class="container">
+
 <app-slider></app-slider>
-<app-titles></app-titles>
+
+
+
+<div class="container">
+
+   
+
+<app-titles [_typeTitle]="findtype"  [_titleMovie]="findMovie"></app-titles>
 </div>
