@@ -1,18 +1,21 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
-import { MovieResponse } from '../models/movies-response.interface';
-import { TvShowsResponse } from '../models/tvshows-response.interface';
+import { HttpClient, HttpHeaders } from '@angular/common/http'
+import { Injectable } from '@angular/core'
+import { Observable } from 'rxjs'
+import { MovieResponse } from '../models/movies-response.interface'
+import { TvShowsResponse } from '../models/tvshows-response.interface'
 @Injectable({
   providedIn: 'root'
 })
 export class ApiServices {
 
+  headerToken: string =  'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJlMTI5ODk5NDFjMjRkYjIxNWRiMTc0NTc1Y2M5ZGI4YyIsInN1YiI6IjY0NWEyOTI0ZmUwNzdhNWNhZWQ5OWNkZiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.EipjFvwsdCa8dy83CkHyWZcX5d0xwHKGA72hDig64gs'
+  apikey: string = 'e12989941c24db215db174575cc9db8c'
+
   constructor(private httpClient: HttpClient) {}
 
   getPopularShows(idGenre : string):Observable<TvShowsResponse>{
     const headers = new HttpHeaders({'accept': 'application/json',
-    'Authorization': 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJlMTI5ODk5NDFjMjRkYjIxNWRiMTc0NTc1Y2M5ZGI4YyIsInN1YiI6IjY0NWEyOTI0ZmUwNzdhNWNhZWQ5OWNkZiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.EipjFvwsdCa8dy83CkHyWZcX5d0xwHKGA72hDig64gs'})
+    'Authorization': this.headerToken})
     
     return this.httpClient.get<TvShowsResponse>(
       'https://api.themoviedb.org/3/discover/tv?include_adult=false&include_null_first_air_dates=false&language=en-US&page=1&sort_by=popularity.desc&watch_region=ES&with_watch_monetization_types=flatrate|free|ads|rent|buy&with_genres='+idGenre,{headers})
@@ -20,26 +23,25 @@ export class ApiServices {
 
   getPopularMovies(idGenre : string):Observable<MovieResponse>{
     const headers = new HttpHeaders({'accept': 'application/json',
-    'Authorization': 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJlMTI5ODk5NDFjMjRkYjIxNWRiMTc0NTc1Y2M5ZGI4YyIsInN1YiI6IjY0NWEyOTI0ZmUwNzdhNWNhZWQ5OWNkZiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.EipjFvwsdCa8dy83CkHyWZcX5d0xwHKGA72hDig64gs'})
+    'Authorization': this.headerToken})
     
     return this.httpClient.get<MovieResponse>(
       'https://api.themoviedb.org/3/discover/movie?include_adult=false&include_null_first_air_dates=false&language=en-US&page=1&sort_by=popularity.desc&watch_region=ES&with_watch_monetization_types=flatrate|free|ads|rent|buy&with_genres='+idGenre,{headers})
   }
 
-
-  getShows(title: String): Observable<TvShowsResponse>{
+  getShows(title: string): Observable<TvShowsResponse>{
     return this.httpClient.get<TvShowsResponse>(
-      'https://api.themoviedb.org/3/search/tv?api_key=e12989941c24db215db174575cc9db8c&query='+title+'&sort_by=popularity.desc')
+      'https://api.themoviedb.org/3/search/tv?api_key='+this.apikey+'&query='+title+'&sort_by=popularity.desc')
   }
 
-  getMovies(title: String): Observable<MovieResponse>{
+  getMovies(title: string): Observable<MovieResponse>{
     return this.httpClient.get<MovieResponse>(
-      'https://api.themoviedb.org/3/search/movie?api_key=e12989941c24db215db174575cc9db8c&query='+title+'&sort_by=popularity.desc')
+      'https://api.themoviedb.org/3/search/movie?api_key='+this.apikey+'&query='+title+'&sort_by=popularity.desc')
   }
 
   getGenresMovie(): Observable<Object>{
     const headers = new HttpHeaders({'accept': 'application/json',
-    'Authorization': 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJlMTI5ODk5NDFjMjRkYjIxNWRiMTc0NTc1Y2M5ZGI4YyIsInN1YiI6IjY0NWEyOTI0ZmUwNzdhNWNhZWQ5OWNkZiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.EipjFvwsdCa8dy83CkHyWZcX5d0xwHKGA72hDig64gs'})
+    'Authorization': this.headerToken})
     
     return this.httpClient.get<Object>(
       'https://api.themoviedb.org/3/genre/movie/list',{headers})
@@ -47,16 +49,26 @@ export class ApiServices {
 
   getGenresShows(): Observable<Object>{
     const headers = new HttpHeaders({'accept': 'application/json',
-    'Authorization': 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJlMTI5ODk5NDFjMjRkYjIxNWRiMTc0NTc1Y2M5ZGI4YyIsInN1YiI6IjY0NWEyOTI0ZmUwNzdhNWNhZWQ5OWNkZiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.EipjFvwsdCa8dy83CkHyWZcX5d0xwHKGA72hDig64gs'})
+    'Authorization': this.headerToken})
     
     return this.httpClient.get<Object>(
       'https://api.themoviedb.org/3/genre/tv/list',{headers})
   }
 
+  getMovieInfo(movieID: string): Observable<MovieResponse>{
+    const headers = new HttpHeaders({'accept': 'application/json',
+    'Authorization': this.headerToken})
+    
+    return this.httpClient.get<MovieResponse>(
+      'https://api.themoviedb.org/3/movie/'+movieID,{headers})
+  }
 
-
-
+  getShowInfo(showID: string): Observable<MovieResponse>{
+    const headers = new HttpHeaders({'accept': 'application/json',
+    'Authorization': this.headerToken})
+    
+    return this.httpClient.get<MovieResponse>(
+      'https://api.themoviedb.org/3/tv/'+showID,{headers})
+  }
 
 }
-
-
