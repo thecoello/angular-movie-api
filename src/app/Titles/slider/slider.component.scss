@@ -15,15 +15,37 @@
   height: 100vh;
 }
 
+.carousel-indicators{
+  z-index: 4;
+}
+
+.carousel-control-next, .carousel-control-prev{
+  z-index: 2;
+}
+
+.carousel-image{
+  z-index: 0;
+}
+
 .carousel-caption {
+  z-index: 3;
   width: 100%;
   bottom: 0;
   left: 0;
   text-align: left;
   padding: 1rem 5rem 4rem;
+  background-color: #00000057;
   backdrop-filter: blur(20px);
   h2{
     font-size: 2rem;
     margin: 1rem 0;
   }
+}
+
+.btn-sliders{
+  mix-blend-mode: hard-light;
+  position: absolute;
+  top: 80vh;
+  right: 5vw;
+  z-index: 4;
 }

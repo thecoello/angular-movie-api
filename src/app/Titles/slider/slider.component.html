@@ -1,0 +1,99 @@
+<div class="container-fluid" id="carouselMovieContainer" *ngIf="displaySliderMovies">
+  <div id="carouselMovies" class="carousel slide">
+    <div class="carousel-indicators">
+      <button type="button" data-bs-target="#carouselMovies" data-bs-slide-to="0" class="active" aria-current="true"
+        aria-label="Slide 1"></button>
+      <button type="button" data-bs-target="#carouselMovies" data-bs-slide-to="1" aria-label="Slide 2"></button>
+      <button type="button" data-bs-target="#carouselMovies" data-bs-slide-to="2" aria-label="Slide 3"></button>
+      <button type="button" data-bs-target="#carouselMovies" data-bs-slide-to="3" aria-label="Slide 4"></button>
+      <button type="button" data-bs-target="#carouselMovies" data-bs-slide-to="4" aria-label="Slide 5"></button>
+      <button type="button" data-bs-target="#carouselMovies" data-bs-slide-to="5" aria-label="Slide 6"></button>
+      <button type="button" data-bs-target="#carouselMovies" data-bs-slide-to="6" aria-label="Slide 7"></button>
+      <button type="button" data-bs-target="#carouselMovies" data-bs-slide-to="7" aria-label="Slide 8"></button>
+      <button type="button" data-bs-target="#carouselMovies" data-bs-slide-to="8" aria-label="Slide 9"></button>
+      <button type="button" data-bs-target="#carouselMovies" data-bs-slide-to="9" aria-label="Slide 1"></button>
+
+    </div>
+    <div class="carousel-inner">
+      <div *ngFor="let slider of slidersMovie | slice:0:10; index as i; ">
+        <div class="{{ (i == 0) ? 'carousel-item  active' : 'carousel-item' }} ">
+          <button (click)="activeSliderTvShow()" type="button" class="btn btn-outline-light btn-sliders"
+          style="--bs-btn-padding-y: .5rem; --bs-btn-padding-x: .3rem; --bs-btn-font-size: .75rem; margin: 1rem;">
+          Watch 10 popular Shows
+        </button>
+          <img
+            src='{{  slider.backdrop_path ? "https://image.tmdb.org/t/p/original/" + slider.backdrop_path : "https://images.unsplash.com/photo-1618022325802-7e5e732d97a1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=896&q=80" }}'
+            class="d-block w-100 carousel-image">
+          <div class="carousel-caption">
+            <div class="d-flex justify-content-start align-items-center">
+              <span>10 popular Movies</span>
+            
+            </div>
+
+            <h2>{{slider.title}}</h2>
+            <button (click)="setIdMovie(slider.id)" type="button" class="btn btn-light">Read more</button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselMovies" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselMovies" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
+
+</div>
+
+<div class="container-fluid" id="carouselMovieContainer" *ngIf="displaySliderShows">
+  <div id="carouselShows" class="carousel slide">
+    <div class="carousel-indicators">
+      <button type="button" data-bs-target="#carouselShows" data-bs-slide-to="0" class="active" aria-current="true"
+        aria-label="Slide 1"></button>
+      <button type="button" data-bs-target="#carouselShows" data-bs-slide-to="1" aria-label="Slide 2"></button>
+      <button type="button" data-bs-target="#carouselShows" data-bs-slide-to="2" aria-label="Slide 3"></button>
+      <button type="button" data-bs-target="#carouselShows" data-bs-slide-to="3" aria-label="Slide 4"></button>
+      <button type="button" data-bs-target="#carouselShows" data-bs-slide-to="4" aria-label="Slide 5"></button>
+      <button type="button" data-bs-target="#carouselShows" data-bs-slide-to="5" aria-label="Slide 6"></button>
+      <button type="button" data-bs-target="#carouselShows" data-bs-slide-to="6" aria-label="Slide 7"></button>
+      <button type="button" data-bs-target="#carouselShows" data-bs-slide-to="7" aria-label="Slide 8"></button>
+      <button type="button" data-bs-target="#carouselShows" data-bs-slide-to="8" aria-label="Slide 9"></button>
+      <button type="button" data-bs-target="#carouselShows" data-bs-slide-to="9" aria-label="Slide 1"></button>
+
+    </div>
+    <div class="carousel-inner">
+      <div *ngFor="let slider of slidersTvShows | slice:0:10; index as i; ">
+        <div class="{{ (i == 0) ? 'carousel-item  active' : 'carousel-item' }} ">
+          <button (click)="activeSliderMovie()" type="button" class="btn btn-outline-light btn-sliders"
+          style="--bs-btn-padding-y: .5rem; --bs-btn-padding-x: .3rem; --bs-btn-font-size: .75rem; margin: 1rem;">
+          Watch 10 popular Movies
+        </button>
+          <img
+            src='{{  slider.backdrop_path ? "https://image.tmdb.org/t/p/original/" + slider.backdrop_path : "https://images.unsplash.com/photo-1618022325802-7e5e732d97a1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=896&q=80" }}'
+            class="d-block w-100">
+          <div class="carousel-caption">
+            <div class="d-flex justify-content-start align-items-center">
+              <span>10 popular TV Shows</span>
+            </div>
+            <h2>{{slider.name}}</h2>
+            <button (click)="setIdTvShow(slider.id)" type="button" class="btn btn-light">Read more</button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselShows" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselShows" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
+
+</div>
