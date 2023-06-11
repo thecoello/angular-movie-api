@@ -3,7 +3,6 @@
 Este proyecto ha sido generado con [Angular CLI](https://github.com/angular/angular-cli) version 15.2.6.
 
 ## Servidor de desarrollo
-<pre>
 **Para poder utilizar el proyecto debes seguir estos pasos:**
 
 1- Clonar o descargar el repositorio.
@@ -11,12 +10,10 @@ Este proyecto ha sido generado con [Angular CLI](https://github.com/angular/angu
 3- Ejecutar en la termina `npm i`.
 4- Al finalizar la descarga de los módulos de npm se debe ejecutar
 el servidor mediante el comando `ng serve`.
-</pre>
 ## Funcionamiento del proyecto
 
 **El proyecto está desarollado mediantes varios componentes (Home, Slider, titles, title-info)**
 
-<pre>
 **-Home:** Se encarga de contener los componentes y de la comunicación entre ellos.
 **-Slider:** Muestra un slider con 10 títulos populares que pueden ser cambiados entre
 películas y series al hacer click en el botón (Watch 10 popular Movies) 
@@ -38,4 +35,3 @@ un click revisar la información del título selccionado.
 -Al iniciar se muestra el slider con las 10 películas populares las cuales se pueden cambiar
 a séries como antes se ha mencionado. También se muestran debajo las 10 películas y 10 séries 
 populares las cuales puedes ser filtradas por genero.
-</pre>
