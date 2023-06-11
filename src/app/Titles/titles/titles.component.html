@@ -1,0 +1,60 @@
+<div class="container">
+    <div class="row" *ngIf="displayMovies">
+        <h2 class="text-light">{{titleMovies}}</h2>
+        <div class="container" *ngIf="!_typeTitle">
+            <div class="row">
+                <div class="col-6 d-flex align-items-center">
+
+                    <span class="text-light">Filter Movies By Genres </span>
+
+                    <div class="col-4">
+                        <select (change)="setGenreMovie($event)" name="genresMovie" id="select-option"
+                            class="form-select m-2" aria-label="Type">
+                            <option value="" selected>Select a option</option>
+                            <option [value]="genre.id" *ngFor="let genre of genresMovies"> {{genre.name}}</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div role='button' class="col d-flex flex-wrap movies justify-content-between">
+            <div (click)="setIdMovie(movie.id)" class="card m-4 text-bg-dark movie" *ngFor="let movie of movies | slice:0:10; index as i;">
+                <img src='{{  movie.poster_path ? "https://image.tmdb.org/t/p/original/" + movie.poster_path : "../../../assets/noposter.jpeg" }}'
+                    height="100%" width="100%" class="card-img image-posts rounded">
+                <div class="card-img-overlay cardsMovies">
+                    <p>id: {{movie.id}}</p>
+                    <h2 class="fs-4">{{movie.title}}</h2>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<hr  *ngIf="!displayShows && !displayMovies">
+<div class="container">
+    <div class="row" *ngIf="displayShows">
+        <h2 class="text-light">{{titleTvShows}}</h2>
+        <div class="container" *ngIf="!_typeTitle">
+            <div class="row">
+                <div class="col-6 d-flex align-items-center">
+                    <span class="text-light">Filter Shows By Genres </span>
+                    <div class="col-4">
+                        <select (change)="setGenreShows($event)" name="genresShows" id="select-option"
+                            class="form-select m-2" aria-label="Type">
+                            <option value="" selected>Select a option</option>
+                            <option [value]="genre.id" *ngFor="let genre of genresTvShows"> {{genre.name}}</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div role='button' class="col d-flex flex-wrap movies justify-content-between">
+            <div (click)="setIdTvShow(tvshow.id)" class="card m-4 text-bg-dark movie" *ngFor="let tvshow of tvshows | slice:0:10; index as i;">
+                <img src='{{  tvshow.poster_path ? "https://image.tmdb.org/t/p/original/" + tvshow.poster_path : "../../../assets/noposter.jpeg" }}'
+                    height="100%" width="100%" class="card-img image-posts rounded">
+                <div class="card-img-overlay cardsMovies">
+                    <h2 class="fs-4">{{tvshow.name}}</h2>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
