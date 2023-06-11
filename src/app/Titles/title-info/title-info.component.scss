@@ -1,0 +1,38 @@
+#infotitlewrap{
+  height: 100vh;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+#infotitlecontainer{
+  backdrop-filter: blur(20px);
+  background-color: rgba(0, 0, 0, 0.599);
+}
+
+#informationcontainer{
+  padding: 0rem 5rem;
+  border-radius: 2rem;
+}
+
+#imageposter{
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+  img{
+    height: 80%;
+    border-radius: 20px;
+    border: 1px solid #ffffff;
+  }
+}
+
+.material-symbols-outlined {
+  font-variation-settings:
+  'FILL' 0,
+  'wght' 400,
+  'GRAD' 0,
+  'opsz' 48;
+  font-size: small;
+}

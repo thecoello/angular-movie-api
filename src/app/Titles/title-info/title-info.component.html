@@ -1,0 +1,64 @@
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+<div>
+  <div *ngIf="displayMovie">
+    <div id="titleinfo" *ngFor="let movie of movies">
+      <div id="infotitlewrap" style='background-image: url(https://image.tmdb.org/t/p/original/{{movie.backdrop_path}});'>
+     
+        <div id="infotitlecontainer" class="container-fluid h-100">
+          <div class="row h-100" >
+            <div class="col-6 d-flex flex-column justify-content-center align-items-start h-100" >
+              <div id="informationcontainer" >
+                <span role='button'(click)='goBack()' class="text-light">Go Back</span>
+                <h1 class="text-light">Title: {{movie.title}}</h1>
+              <h3 class="text-light">Original title: {{movie.original_title}}</h3>
+              <h5 class="text-light">Date: {{movie.release_date}}</h5>
+              <p class="text-light">Genre: <span *ngFor="let genres of movie.genres"> {{genres.name}}</span> | Votes: {{movie.vote_count}} <span class="bg-light text-dark p-1 m-1">{{movie.vote_average}}<span class="material-symbols-outlined">
+                star
+                </span></span> </p>
+              <p class="text-light">{{movie.overview}}</p>
+              </div>
+            </div>
+            <div class="col-6 d-flex justify-content-start align-items-center h-100">
+              <div id="imageposter">
+                <img src='{{  movie.poster_path ? "https://image.tmdb.org/t/p/original/" + movie.poster_path : "../../../assets/noposter.jpeg" }}' height="100%" width="100%" class="card-img image-posts rounded">
+              </div>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div>
+  <div *ngIf="displayTvShow">
+    <div id="titleinfo" *ngFor="let tvshow of tvshows">
+      <div id="infotitlewrap" style='background-image: url(https://image.tmdb.org/t/p/original/{{tvshow.poster_path}});'>
+     
+        <div id="infotitlecontainer" class="container-fluid h-100">
+          <div class="row h-100" >
+            <div class="col-6 d-flex flex-column justify-content-center align-items-start h-100" >
+              <div id="informationcontainer" >
+                <span role='button' (click)='goBack()' class="text-light">Go Back</span>
+                <h1 class="text-light">Title: {{tvshow.name}}</h1>
+              <h3 class="text-light">Original title: {{tvshow.original_name}}</h3>
+              <h5 class="text-light">Date: {{tvshow.first_air_date}} - {{tvshow.last_air_date}}</h5>
+              <p class="text-light">Seasons: {{tvshow.number_of_seasons}} | Episodes: {{tvshow.number_of_episodes}}</p>
+              <p class="text-light">Genre: <span *ngFor="let genres of tvshow.genres"> {{genres.name}}</span> | Votes: {{tvshow.vote_count}} <span class="bg-light text-dark p-1 m-1">{{tvshow.vote_average}}<span class="material-symbols-outlined">
+                star
+                </span></span> </p>
+              <p class="text-light">{{tvshow.overview}}</p>
+              </div>
+            </div>
+            <div class="col-6 d-flex justify-content-start align-items-center h-100">
+              <div id="imageposter">
+                <img src='{{  tvshow.poster_path ? "https://image.tmdb.org/t/p/original/" + tvshow.poster_path : "../../../assets/noposter.jpeg" }}' height="100%" width="100%" class="card-img image-posts rounded">
+              </div>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
