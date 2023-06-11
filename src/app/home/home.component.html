@@ -1,36 +1,42 @@
-<div class="container-fluid fixed-top m-0 p-0">
+<header  *ngIf="setIdShow == '' && setIdMovie == ''" class="container-fluid fixed-top m-0 p-0">
   <nav class="navbar navbar-expand-lg bg-body-tertiary">
-      <div class="container-fluid">
-          
-
-          <div class="row w-100">
-            <div class="w-50 col-6">
-                <a class="navbar-brand text-light" href="#">ScREEN</a>
-            </div>
-            <div class="w-50 col-6">
-                <div class="d-flex justify-content-end" role="search">
-                    <input [(ngModel)]='titleMovie' [defaultValue]="undefined" name="titleMovie" id="titleMovie"  class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-               
-                    <select [(ngModel)]='titleType' name="titleType" id="select-option" class="form-select  me-2" aria-label="Type">
-                      <option value="Movie" selected >Movie</option>
-                      <option value="TV Show">TV Show</option>
-                    </select>
-                    <button (click)='findTitle()' class="btn btn-outline-light" type="submit">Search</button>
-                </div>
-            </div>
+    <div class="container-fluid">
+      <div class="row w-100">
+        <div class="w-50 col-6">
+          <a (click)="reload()" class="navbar-brand text-light" href="#">ScREEN</a>
+        </div>
+        <div class="w-50 col-6">
+          <div class="d-flex justify-content-end" role="search">
+            <input [(ngModel)]='titleMovie' [defaultValue]="undefined" name="titleMovie" id="titleMovie"
+              class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+            <select [(ngModel)]='titleType' name="titleType" id="select-option" class="form-select  me-2"
+              aria-label="Type">
+              <option value="Movie" selected>Movie</option>
+              <option value="TV Show">TV Show</option>
+            </select>
+            <a href="#titleresult"><button (click)='findTitle()' class="btn btn-outline-light" type="submit">Search</button></a>
+            
           </div>
+        </div>
       </div>
+    </div>
   </nav>
-</div>
+</header>
+
+<app-slider *ngIf="setIdShow == '' && setIdMovie == ''" (_idTVShow)="getIdTVShow($event)" (_idMovie)="getIdMovie($event)"></app-slider>
+<app-titles id="titleresult" *ngIf="setIdShow == '' && setIdMovie == ''"  (_idTVShow)="getIdTVShow($event)" (_idMovie)="getIdMovie($event)" [_typeTitle]="findtype" [_titleMovie]="findMovie"></app-titles>
+<app-title-info (_goBack)="goBack($event)" [_idTVShow]="setIdShow" [_idMovie]="setIdMovie"></app-title-info>
 
 
-<app-slider></app-slider>
 
-
-
-<div class="container">
-
-   
-
-<app-titles [_typeTitle]="findtype"  [_titleMovie]="findMovie"></app-titles>
-</div>
+<footer  *ngIf="setIdShow == '' && setIdMovie == ''" class="p-4">
+  <hr class="text-light">
+  <div class="row">
+    <div class="col-4"></div>
+    <div class="col-4">
+      <p class="text-light text-center">ScREEN {{currentYear}}</p>
+      <p  class="text-light text-center">This is a final project for GeeksHubs Academy</p>
+    </div>
+    <div class="col-4"></div>
+  </div>
+</footer>
